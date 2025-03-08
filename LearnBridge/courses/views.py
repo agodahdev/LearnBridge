@@ -37,8 +37,9 @@ def submit_review(request, course_id):
         form = ReviewForm()
     return render(request, 'courses/submit_review.html', {'form': form, 'course': course})
 
+#Handles creating a new course#
 def create_course(request):
-    """Handles creating a new course"""
+
     if request.method == "POST":
         form = CourseForm(request.POST)
         if form.is_valid():
@@ -48,3 +49,18 @@ def create_course(request):
         form = CourseForm()
 
     return render(request, "courses/create_course.html", {"form": form})
+
+#Handles updating an existing course#
+def update_course(request, course_id):
+    
+    course = get_object_or_404(Course, id=course_id)
+
+    if request.method == "POST":
+        form = CourseForm(request.POST, instance=course)
+        if form.is_valid():
+            form.save()
+            return redirect("course_list")  # Redirect to course list after updating
+    else:
+        form = CourseForm(instance=course)
+
+    return render(request, "courses/update_course.html", {"form": form, "course": course})
