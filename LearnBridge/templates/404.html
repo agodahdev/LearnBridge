@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="error-container">
+    <h1 class="error-code">404</h1>
+    <h2 class="error-heading">Oops! Page Not Found</h2>
+    <p class="error-message">Sorry, the page you are looking for doesn't exist or has been moved.</p>
+
+    <div class="error-actions">
+        <a href="{% url 'course_list' %}" class="btn back-btn">Go to Courses</a>
+        <a href="{% url 'home' %}" class="btn home-btn">Return Home</a>
+    </div>
+
+    <!-- Search bar to help users find what they need -->
+    <form action="{% url 'course_list' %}" method="GET" class="search-form">
+        <input type="text" name="q" placeholder="Search for courses..." required>
+        <button type="submit">Search</button>
+    </form>
+</div>
+{% endblock %}
