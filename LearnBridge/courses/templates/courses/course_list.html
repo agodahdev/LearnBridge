@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="course-list-container">
+    <h2>Explore Our Courses</h2>
+
+    <!-- Grid layout for courses -->
+    <div class="course-grid">
+        {% for course in courses %}
+            <div class="course-card">
+                <!-- Course Title -->
+                <h3 class="course-title">{{ course.title }}</h3>
+
+                <!-- Course Details -->
+                <p class="course-description">{{ course.description|truncatewords:20 }}</p>
+                <p class="course-price"><strong>Price:</strong> ${{ course.price }}</p>
+
+                <!-- Buttons for viewing details & enrolling -->
+                <div class="course-actions">
+                    <a href="{% url 'course_detail' course.id %}" class="btn details-btn">View Details</a>
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'enroll_course' course.id %}" class="btn enroll-btn">Enroll Now</a>
+                    {% else %}
+                        <a href="{% url 'login' %}" class="btn login-btn">Login to Enroll</a>
+                    {% endif %}
+                </div>
+            </div>
+        {% empty %}
+            <p class="no-courses">No courses available at the moment.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
