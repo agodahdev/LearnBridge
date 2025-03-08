@@ -36,11 +36,10 @@ def user_login(request):
         messages.error(request, "Invalid credentials.")
     return render(request, "users/login.html")
 
-# Handles user logout
 def user_logout(request):
     logout(request)
-    return redirect("login")
-
+    return redirect('login')
+    
 def user_login(request):
     if request.method == "POST":
         username = request.POST["username"]
