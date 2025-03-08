@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="review-container">
+    <h2 class="review-heading">Student Reviews</h2>
+
+    {% if reviews %}
+        <div class="review-grid">
+            {% for review in reviews %}
+                <div class="review-card">
+                    <div class="review-header">
+                        <!-- Display profile picture if available -->
+                        {% if review.user.profile.profile_picture %}
+                            <img src="{{ review.user.profile.profile_picture.url }}" alt="{{ review.user.username }}" class="profile-pic">
+                        {% else %}
+                            <img src="{% static 'images/default_user.png' %}" alt="Default Profile" class="profile-pic">
+                        {% endif %}
+
+                        <div class="review-info">
+                            <strong class="review-username">{{ review.user.username }}</strong>
+                            <p class="review-date">{{ review.created_at|date:"F j, Y" }}</p>
+                        </div>
+                    </div>
+
+                    <!-- Star Rating Display -->
+                    <div class="star-rating">
+                        {% for i in "12345"|make_list %}
+                            {% if forloop.counter <= review.rating %}
+                                ⭐
+                            {% else %}
+                                ☆
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+
+                    <!-- Review Comment -->
+                    <p class="review-comment">{{ review.comment }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="no-reviews">No reviews yet. Be the first to leave a review!</p>
+    {% endif %}
+</div>
+{% endblock %}
