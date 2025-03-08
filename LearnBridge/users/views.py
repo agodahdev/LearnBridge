@@ -39,7 +39,7 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return redirect('login')
-    
+
 def user_login(request):
     if request.method == "POST":
         username = request.POST["username"]
@@ -51,6 +51,7 @@ def user_login(request):
         messages.error(request, "Invalid credentials.")
     return render(request, "users/login.html")
 
-@login_required
+#@login_required
 def dashboard(request):
-    return render(request, "users/dashboard.html")    
+    enrolled_courses = Enrollment.objects.filter(user=request.user)
+    return render(request, 'users/dashboard.html', {'enrolled_courses': enrolled_courses})
