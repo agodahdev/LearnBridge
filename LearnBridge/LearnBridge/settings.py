@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     "127.0.0.1", 
     "localhost", 
-    "8000-agodahdev-learnbridge-8s9qypib9qc.ws-eu118.gitpod.io"
+    "8000-agodahdev-learnbridge-92hleb3fp6m.ws-eu118.gitpod.io"
 ]
 
 
@@ -131,3 +131,7 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://8000-agodahdev-learnbridge-92hleb3fp6m.ws-eu118.gitpod.io"  # Update with your Gitpod URL
+]
