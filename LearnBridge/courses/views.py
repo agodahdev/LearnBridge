@@ -3,6 +3,11 @@ from .models import Enrollment
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
+# Displays user dashboard
+@login_required
+def dashboard(request):
+    return render(request, "users/dashboard.html")
+
 # Allows logged-in users to enroll in a course
 @login_required
 def enroll(request, course_id):
