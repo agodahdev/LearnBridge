@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Course
+from .models import Course, Enrollment #Import Enrollment model
 
 # Register your models here.
 admin.site.register(Course)

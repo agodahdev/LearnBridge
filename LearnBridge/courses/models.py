@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User #imports the built-in User model
 
 # Create your models here.
 class Course(models.Model):
