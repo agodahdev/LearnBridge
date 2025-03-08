@@ -52,7 +52,7 @@ def create_course(request):
 
 #Handles updating an existing course#
 def update_course(request, course_id):
-    
+
     course = get_object_or_404(Course, id=course_id)
 
     if request.method == "POST":
@@ -64,3 +64,14 @@ def update_course(request, course_id):
         form = CourseForm(instance=course)
 
     return render(request, "courses/update_course.html", {"form": form, "course": course})
+
+# Handles deleting course 
+def delete_course(request, course_id):
+    
+    course = get_object_or_404(Course, id=course_id)
+
+    if request.method == "POST":
+        course.delete()
+        return redirect("course_list")  # ✅ Redirect to course list after deletion
+
+    return render(request, "courses/delete_course.html", {"course": course})
