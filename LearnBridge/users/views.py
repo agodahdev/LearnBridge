@@ -52,4 +52,6 @@ def user_login(request):
         messages.error(request, "Invalid credentials.")
     return render(request, "users/login.html")
 
-    
+@login_required
+def dashboard(request):
+    return render(request, "users/dashboard.html")    
