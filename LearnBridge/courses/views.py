@@ -36,3 +36,15 @@ def submit_review(request, course_id):
     else:
         form = ReviewForm()
     return render(request, 'courses/submit_review.html', {'form': form, 'course': course})
+
+def create_course(request):
+    """Handles creating a new course"""
+    if request.method == "POST":
+        form = CourseForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("course_list")  #s Redirect to course list after creation
+    else:
+        form = CourseForm()
+
+    return render(request, "courses/create_course.html", {"form": form})
