@@ -25,7 +25,11 @@ SECRET_KEY = 'django-insecure-78n@e*)03!mzp+nk3&#$j)1c)l-akt3ba4uj(h%yh2&z^nd=a^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "127.0.0.1", 
+    "localhost", 
+    "8000-agodahdev-learnbridge-8s9qypib9qc.ws-eu118.gitpod.io"
+]
 
 
 # Application definition
@@ -54,10 +58,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'LearnBridge.urls'
 
+import os
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, "templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -7,33 +7,50 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <h1>Register</h1>
 
-    <!-- Display Django Messages -->
-    {% if messages %}
-        {% for message in messages %}
-            <p style="color: red;">{{ message }}</p>
-        {% endfor %}
-    {% endif %}
+    <!-- Hero Section (Consistent with Base & Login) -->
+    <div class="hero">
+        <h1>Create Your Account</h1>
+        <p>Join LearnBridge and start learning today!</p>
+    </div>
 
-    <form method="POST">
-        {% csrf_token %}
-        
-        <label>Username:</label>
-        <input type="text" name="username" required>
+    <!-- Registration Form Container -->
+    <div class="form-container">
+        <h2>Register</h2>
 
-        <label>Email:</label>
-        <input type="email" name="email" required>
+        <!-- Display Django Messages -->
+        {% if messages %}
+            <div class="alert">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
 
-        <label>Password:</label>
-        <input type="password" name="password1" required>
+        <form method="POST">
+            {% csrf_token %}
+            
+            <label>Username:</label>
+            <input type="text" name="username" placeholder="Choose a username" required>
 
-        <label>Confirm Password:</label>
-        <input type="password" name="password2" required>
+            <label>Email:</label>
+            <input type="email" name="email" placeholder="Enter your email" required>
 
-        <button type="submit">Register</button>
-    </form>
+            <label>Password:</label>
+            <input type="password" name="password1" placeholder="Create a password" required>
 
-    <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+            <label>Confirm Password:</label>
+            <input type="password" name="password2" placeholder="Confirm your password" required>
+
+            <button type="submit">Register</button>
+        </form>
+
+        <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+    </div>
+
+    <footer>
+        <p>© 2025 LearnBridge. All Rights Reserved.</p>
+    </footer>
+
 </body>
 </html>

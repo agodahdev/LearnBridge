@@ -1,76 +1,141 @@
-/* === GENERAL STYLING === */
+/* General Page Styling */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
     margin: 0;
     padding: 0;
-}
-
-.container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 20px;
-}
-
-h1, h2, h3 {
+    background-color: #f4f4f4;
     color: #333;
+    line-height: 1.6;
 }
 
-a {
-    text-decoration: none;
-    color: #007bff;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-/* === NAVIGATION BAR === */
-.navbar {
-    background: #007bff;
-    padding: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.navbar a {
+/* Hero Section */
+.hero {
+    background: linear-gradient(to right, #0073e6, #00b4d8);
     color: white;
-    font-size: 16px;
-    margin: 0 15px;
-    text-decoration: none;
-}
-
-.navbar a:hover {
-    text-decoration: underline;
-}
-
-/* === HOME PAGE === */
-.home-container {
     text-align: center;
     padding: 50px 20px;
 }
 
-.home-heading {
-    font-size: 28px;
-    color: #007bff;
-    margin-bottom: 10px;
+.hero h1 {
+    margin: 0;
+    font-size: 2.5em;
 }
 
-.home-subtext {
-    font-size: 18px;
-    color: #555;
-    margin-bottom: 20px;
+.hero p {
+    font-size: 1.2em;
 }
 
-.home-btn {
-    background: #28a745;
+/* Navigation Bar */
+.nav-links {
+    background: #004080;
+    text-align: center;
+    padding: 15px 0;
+}
+
+.nav-links a {
     color: white;
-    padding: 12px 20px;
-    border-radius: 5px;
-    font-size: 16px;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1.1em;
+    font-weight: bold;
 }
 
-.home-btn:hover {
-    opacity: 0.8;
+.nav-links a:hover {
+    color: #00b4d8;
+}
+
+/* Home Page Container */
+.home-container {
+    max-width: 800px;
+    margin: 30px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.home-container h2 {
+    color: #0073e6;
+}
+
+.home-container p {
+    font-size: 1.1em;
+}
+
+/* Footer */
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+/*  Login & Register Form Styling */
+.form-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.form-container h2 {
+    color: #0073e6;
+}
+
+.form-container label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+.form-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-container button {
+    width: 100%;
+    padding: 10px;
+    background: #0073e6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.form-container button:hover {
+    background: #005bb5;
+}
+
+.form-container p {
+    margin-top: 15px;
+}
+
+.form-container a {
+    color: #0073e6;
+    text-decoration: none;
+}
+
+.form-container a:hover {
+    text-decoration: underline;
+}
+
+/* Alerts for Messages */
+.alert {
+    background-color: #ffdddd;
+    border-left: 4px solid #f44336;
+    padding: 10px;
+    margin-bottom: 15px;
+    color: #d8000c;
+    text-align: center;
 }

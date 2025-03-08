@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome to LearnBridge{% endblock %}
+
+{% block content %}
+<div class="hero-section">
+    <div class="hero-text">
+        <h1>Welcome to LearnBridge</h1>
+        <p>Explore online courses and enhance your skills with expert-led lessons.</p>
+        <a href="{% url 'course_list' %}" class="btn btn-primary">Browse Courses</a>
+    </div>
+</div>
+
+<section class="features">
+    <h2>Why Learn With Us?</h2>
+    <div class="feature-cards">
+        <div class="feature">
+            <h3>📚 Expert Instructors</h3>
+            <p>Learn from industry leaders with years of experience.</p>
+        </div>
+        <div class="feature">
+            <h3>⏳ Flexible Learning</h3>
+            <p>Study at your own pace, anytime, anywhere.</p>
+        </div>
+        <div class="feature">
+            <h3>🎓 Certification</h3>
+            <p>Earn certificates to showcase your achievements.</p>
+        </div>
+    </div>
+</section>
+
+<section class="popular-courses">
+    <h2>Popular Courses</h2>
+    <div class="course-grid">
+        {% for course in courses|slice:":3" %}
+            <div class="course-card">
+                <h3>{{ course.title }}</h3>
+                <p>{{ course.description|truncatewords:15 }}</p>
+                <a href="{% url 'course_detail' course.id %}" class="btn btn-secondary">Learn More</a>
+            </div>
+        {% empty %}
+            <p>No courses available yet. Check back soon!</p>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="cta-section">
+    <h2>Ready to Learn?</h2>
+    <p>Join thousands of students and start your learning journey today!</p>
+    <a href="{% url 'register' %}" class="btn btn-primary">Get Started</a>
+</section>
+{% endblock %}

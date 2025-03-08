@@ -7,18 +7,33 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <h1>Login</h1>
-    <form method="POST">
-        {% csrf_token %}
-        <label>Username:</label>
-        <input type="text" name="username" required>
-        
-        <label>Password:</label>
-        <input type="password" name="password" required>
 
-        <button type="submit">Login</button>
-    </form>
+    <!-- Hero Section (Same as Base) -->
+    <div class="hero">
+        <h1>Login to LearnBridge</h1>
+        <p>Access your courses and track progress.</p>
+    </div>
 
-    <p>Don't have an account? <a href="{% url 'register' %}">Register here</a></p>
+    <!-- Login Form Container -->
+    <div class="form-container">
+        <h2>Login</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <label>Username:</label>
+            <input type="text" name="username" placeholder="Enter your username" required>
+
+            <label>Password:</label>
+            <input type="password" name="password" placeholder="Enter your password" required>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <p>Don't have an account? <a href="{% url 'register' %}">Register here</a></p>
+    </div>
+
+    <footer>
+        <p>© 2025 LearnBridge. All Rights Reserved.</p>
+    </footer>
+
 </body>
 </html>
