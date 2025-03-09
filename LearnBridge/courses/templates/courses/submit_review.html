@@ -1,45 +1,70 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Review - {{ course.title }}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
 
-{% block content %}
-<div class="review-container">
-    <h2 class="review-heading">Student Reviews</h2>
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'course_list' %}">Courses</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'dashboard' %}">Dashboard</a>
+                <a href="{% url 'logout' %}">Logout</a>
+            {% else %}
+                <a href="{% url 'login' %}">Login</a>
+                <a href="{% url 'register' %}">Register</a>
+            {% endif %}
+        </nav>
+    </header>
 
-    {% if reviews %}
-        <div class="review-grid">
-            {% for review in reviews %}
-                <div class="review-card">
-                    <div class="review-header">
-                        <!-- Display profile picture if available -->
-                        {% if review.user.profile.profile_picture %}
-                            <img src="{{ review.user.profile.profile_picture.url }}" alt="{{ review.user.username }}" class="profile-pic">
-                        {% else %}
-                            <img src="{% static 'images/default_user.png' %}" alt="Default Profile" class="profile-pic">
-                        {% endif %}
+    <!-- Review Section -->
+    <main class="review-container">
+        <h1>Submit Your Review</h1>
+        <h2>{{ course.title }}</h2>
 
-                        <div class="review-info">
-                            <strong class="review-username">{{ review.user.username }}</strong>
-                            <p class="review-date">{{ review.created_at|date:"F j, Y" }}</p>
-                        </div>
+        <!-- Review Submission Form -->
+        <form method="POST" class="review-form">
+            {% csrf_token %}
+            <label for="id_rating">Rating:</label>
+            {{ form.rating }}
+
+            <label for="id_comment">Your Review:</label>
+            {{ form.comment }}
+
+            <button type="submit" class="btn submit-btn">Submit Review</button>
+        </form>
+
+        <hr>
+
+        <!-- Display Reviews -->
+        <h2>Student Reviews</h2>
+        {% if reviews %}
+            <div class="review-list">
+                {% for review in reviews %}
+                    <div class="review-card">
+                        <strong class="review-username">{{ review.user.username }}</strong>
+                        <p class="review-date">{{ review.date_posted|date:"F j, Y" }}</p>
+                        <p class="review-rating">⭐ {{ review.rating }}/5</p>
+                        <p class="review-comment">{{ review.comment }}</p>
                     </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No reviews yet. Be the first to review!</p>
+        {% endif %}
+    </main>
 
-                    <!-- Star Rating Display -->
-                    <div class="star-rating">
-                        {% for i in "12345"|make_list %}
-                            {% if forloop.counter <= review.rating %}
-                                ⭐
-                            {% else %}
-                                ☆
-                            {% endif %}
-                        {% endfor %}
-                    </div>
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 LearnBridge. All Rights Reserved.</p>
+    </footer>
 
-                    <!-- Review Comment -->
-                    <p class="review-comment">{{ review.comment }}</p>
-                </div>
-            {% endfor %}
-        </div>
-    {% else %}
-        <p class="no-reviews">No reviews yet. Be the first to leave a review!</p>
-    {% endif %}
-</div>
-{% endblock %}
+</body>
+</html>
