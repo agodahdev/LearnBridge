@@ -1,49 +1,71 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ course.title }} | LearnBridge</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
 
-{% block content %}
-<div class="course-container">
-    <!-- Course Banner Image -->
-    {% if course.image %}
-        <img src="{{ course.image.url }}" alt="{{ course.title }}" class="course-banner">
-    {% else %}
-        <img src="{% static 'images/default_course.jpg' %}" alt="Default Course Image" class="course-banner">
-    {% endif %}
-
-    <!-- Course Title -->
-    <h1 class="course-title">{{ course.title }}</h1>
-
-    <!-- Course Details -->
-    <div class="course-info">
-        <p class="course-description">{{ course.description }}</p>
-        <p><strong>Instructor:</strong> {{ course.instructor.username }}</p>
-        <p><strong>Price:</strong> ${{ course.price }}</p>
-    </div>
-
-    <!-- Enrollment Section -->
-    {% if user.is_authenticated %}
-        <div class="course-actions">
-            <a href="{% url 'enroll_course' course.id %}" class="btn enroll-btn">Enroll in Course</a>
-            <a href="{% url 'submit_review' course.id %}" class="btn review-btn">Leave a Review</a>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="{% url 'home' %}" class="logo">LearnBridge</a>
+        <div class="nav-links">
+            <a href="{% url 'course_list' %}">📚 Courses</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'dashboard' %}">👤 Dashboard</a>
+                <a href="{% url 'logout' %}">🚪 Logout</a>
+            {% else %}
+                <a href="{% url 'login' %}">🔑 Login</a>
+                <a href="{% url 'register' %}">📝 Register</a>
+            {% endif %}
         </div>
-    {% else %}
-        <p class="login-message">
-            <a href="{% url 'login' %}" class="login-link">Login</a> to enroll or leave a review.
-        </p>
-    {% endif %}
+    </nav>
 
-    <!-- Course Reviews Section -->
-    <div class="course-reviews">
-        <h2>Student Reviews</h2>
-        {% if course.reviews.all %}
-            {% for review in course.reviews.all %}
-                <div class="review-card">
-                    <p><strong>{{ review.user.username }}</strong> ({{ review.created_at|date:"F j, Y" }})</p>
-                    <p class="review-text">{{ review.text }}</p>
-                </div>
-            {% endfor %}
+    <!-- Course Detail Section -->
+    <div class="course-container">
+        <div class="course-header">
+            <h1>{{ course.title }}</h1>
+            <p class="course-description">{{ course.description }}</p>
+            <p class="course-price"><strong>Price:</strong> ${{ course.price }}</p>
+        </div>
+
+        <!-- Enrollment Section -->
+        {% if user.is_authenticated %}
+            <div class="course-actions">
+                <a href="{% url 'enroll_course' course.id %}" class="btn enroll-btn">Enroll Now</a>
+                <a href="{% url 'submit_review' course.id %}" class="btn review-btn">Leave a Review</a>
+            </div>
         {% else %}
-            <p>No reviews yet. Be the first to leave a review!</p>
+            <p class="login-prompt">
+                <a href="{% url 'login' %}">Login</a> to enroll or leave a review.
+            </p>
         {% endif %}
+
+        <!-- Reviews Section -->
+        <div class="reviews-section">
+            <h2>Student Reviews</h2>
+            {% if reviews %}
+                <ul class="reviews-list">
+                    {% for review in reviews %}
+                        <li class="review-item">
+                            <p><strong>{{ review.user.username }}</strong> rated <strong>{{ review.rating }}/5</strong></p>
+                            <p class="review-comment">"{{ review.comment }}"</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No reviews yet. Be the first to leave a review!</p>
+            {% endif %}
+        </div>
     </div>
-</div>
-{% endblock %}
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 LearnBridge. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

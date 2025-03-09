@@ -516,3 +516,113 @@ footer {
 .logout-btn:hover {
     background: #c82333;
 }
+
+/* Course Container */
+.course-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Course Header */
+.course-header {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #eee;
+}
+
+.course-header h1 {
+    font-size: 28px;
+    color: #333;
+}
+
+.course-description {
+    font-size: 16px;
+    color: #666;
+}
+
+.course-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #27ae60;
+}
+
+/* Enrollment & Review Buttons */
+.course-actions {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.enroll-btn {
+    background-color: #27ae60;
+    color: white;
+}
+
+.review-btn {
+    background-color: #3498db;
+    color: white;
+}
+
+/* Login Prompt */
+.login-prompt {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+.login-prompt a {
+    color: #3498db;
+    font-weight: bold;
+}
+
+/* Reviews Section */
+.reviews-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #eee;
+}
+
+.reviews-section h2 {
+    text-align: center;
+    font-size: 22px;
+    color: #333;
+}
+
+.reviews-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.review-item {
+    padding: 15px;
+    margin-bottom: 10px;
+    background: #f8f8f8;
+    border-radius: 5px;
+}
+
+.review-comment {
+    font-style: italic;
+    color: #555;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #222;
+    color: white;
+    margin-top: 40px;
+}
