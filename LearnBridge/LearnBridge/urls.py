@@ -26,5 +26,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", home, name="home"),  # Add this line to set the homepage
     path("courses/", include("courses.urls")),
-    path("users/", include("users.urls")),
+    path('users/', include('users.urls')),
 ]

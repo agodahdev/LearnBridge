@@ -3,6 +3,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .forms import RegisterForm
+from courses.models import Enrollment
 
 # Register a new user
 def register(request):
@@ -38,7 +39,7 @@ def user_logout(request):
 # User dashboard (Shows enrolled courses)
 @login_required
 def dashboard(request):
-    enrolled_courses = request.user.enrollment_set.all()
+    enrolled_courses = Enrollment.objects.filter(user=request.user)  # ✅ Fetch courses correctly
     return render(request, 'users/dashboard.html', {'enrolled_courses': enrolled_courses})
 
 # User profile page

@@ -1,22 +1,69 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - LearnBridge</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
 
-{% block content %}
-<div class="dashboard-container">
-    <h2 class="dashboard-heading">📚 My Enrolled Courses</h2>
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <h1>📊 My Dashboard</h1>
+        <nav>
+            <a href="{% url 'course_list' %}">📚 Courses</a>
+            <a href="{% url 'profile' %}">👤 Profile</a>
+            <a href="{% url 'logout' %}">🚪 Logout</a>
+        </nav>
+    </header>
 
-    {% if enrolled_courses %}
-        <div class="course-grid">
-            {% for enrollment in enrolled_courses %}
-                <div class="course-card">
-                    <h3 class="course-title">{{ enrollment.course.title }}</h3>
-                    <p class="course-description">{{ enrollment.course.description|truncatewords:15 }}</p>
-                    <a href="{% url 'course_detail' enrollment.course.id %}" class="btn course-btn">View Course</a>
+    <!-- Main Dashboard Content -->
+    <main class="dashboard-container">
+        
+        <!-- Welcome Section -->
+        <section class="dashboard-header">
+            <h2>Welcome, {{ user.username }}! 🎓</h2>
+            <p>Manage your enrolled courses and explore new learning opportunities.</p>
+        </section>
+
+        <!-- Enrolled Courses Section -->
+        <section class="dashboard-courses">
+            <h2>📖 My Enrolled Courses</h2>
+
+            {% if enrolled_courses %}
+                <div class="course-grid">
+                    {% for enrollment in enrolled_courses %}
+                        <div class="course-card">
+                            <h3>{{ enrollment.course.title }}</h3>
+                            <p>{{ enrollment.course.description|truncatewords:15 }}</p>
+                            <a href="{% url 'course_detail' enrollment.course.id %}" class="btn btn-primary">View Course</a>
+                        </div>
+                    {% endfor %}
                 </div>
-            {% endfor %}
-        </div>
-    {% else %}
-        <p class="no-courses">You are not enrolled in any courses yet.</p>
-        <a href="{% url 'course_list' %}" class="btn explore-btn">Explore Courses</a>
-    {% endif %}
-</div>
-{% endblock %}
+            {% else %}
+                <p class="no-courses">You are not enrolled in any courses yet.</p>
+                <a href="{% url 'course_list' %}" class="btn btn-secondary">Browse Courses</a>
+            {% endif %}
+        </section>
+
+        <!-- Quick Actions -->
+        <section class="dashboard-actions">
+            <h2>⚡ Quick Actions</h2>
+            <div class="action-grid">
+                <a href="{% url 'course_list' %}" class="action-card">📖 Browse Courses</a>
+                <a href="{% url 'profile' %}" class="action-card">👤 Edit Profile</a>
+                <a href="{% url 'logout' %}" class="action-card logout-btn">🚪 Logout</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 LearnBridge. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
