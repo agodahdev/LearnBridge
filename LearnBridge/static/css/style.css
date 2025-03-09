@@ -626,3 +626,72 @@ footer {
     color: white;
     margin-top: 40px;
 }
+
+/* Review Page Styling */
+.review-container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.review-form {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.review-form label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.review-form textarea, .review-form select {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.submit-btn {
+    background: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    background: #0056b3;
+}
+
+.review-list {
+    margin-top: 20px;
+}
+
+.review-card {
+    background: white;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+}
+
+.review-username {
+    font-weight: bold;
+    color: #333;
+}
+
+.review-date {
+    font-size: 0.9em;
+    color: #777;
+}
+
+.review-rating {
+    font-size: 1.2em;
+    color: #f39c12;
+}
