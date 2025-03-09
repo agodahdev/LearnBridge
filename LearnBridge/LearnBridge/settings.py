@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     "127.0.0.1", 
     "localhost", 
-    "8000-agodahdev-learnbridge-7voov0jhp9z.ws-eu118.gitpod.io"
+    "8000-agodahdev-learnbridge-eaejhcdd4w8.ws-eu118.gitpod.io"
 ]
 
 
@@ -133,5 +133,5 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://8000-agodahdev-learnbridge-7voov0jhp9z.ws-eu118.gitpod.io"  # Update with your Gitpod URL
+    "https://8000-agodahdev-learnbridge-eaejhcdd4w8.ws-eu118.gitpod.io"  # Update with your Gitpod URL
 ]
